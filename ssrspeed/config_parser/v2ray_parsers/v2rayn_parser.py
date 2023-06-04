@@ -32,6 +32,7 @@ class ParserV2RayN(object):
 			if (cfgVersion == "2"):
 				host = _conf.get("host","") # http host,web socket host,h2 host,quic encrypt method
 				path = _conf.get("path","") #Websocket path, http path, quic encrypt key
+				sni = _conf.get("sni","") #sni
 			#V2RayN Version 1 Share Link Support
 			else:
 				try:
@@ -40,7 +41,7 @@ class ParserV2RayN(object):
 				except IndexError:
 					pass
 			tls = _conf.get("tls","none") #TLS
-			tlsHost = host
+			tlsHost = sni
 			security = _conf.get("security","auto")
 			remarks = _conf.get("ps",server)
 			remarks = remarks if remarks else server
